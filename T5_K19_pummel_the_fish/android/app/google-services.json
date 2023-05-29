@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "673451247806",
+    "project_id": "pummel-the-fish",
+    "storage_bucket": "pummel-the-fish.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673451247806:android:a5aaba75b20cccf6d3b6ef",
+        "android_client_info": {
+          "package_name": "com.example.pummel_the_fish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673451247806-8l013pc4lmj7v5675dobvmnotg9ht7li.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDt0ve5R-LR1H0_I83YpqvbFs6ZsLEHDvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673451247806-8l013pc4lmj7v5675dobvmnotg9ht7li.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "673451247806-etqk7l6sfdvhj3v04ok2n70f5lb5qm1c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "de.losfluttern.pummelTheFish"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673451247806:android:9f1a2aca4e94f4edd3b6ef",
+        "android_client_info": {
+          "package_name": "de.losfluttern.pummel_the_fish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673451247806-8l013pc4lmj7v5675dobvmnotg9ht7li.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDt0ve5R-LR1H0_I83YpqvbFs6ZsLEHDvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673451247806-8l013pc4lmj7v5675dobvmnotg9ht7li.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "673451247806-etqk7l6sfdvhj3v04ok2n70f5lb5qm1c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "de.losfluttern.pummelTheFish"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
