@@ -79,7 +79,7 @@
     - Richtig: *class _InfoCard extends StatelessWidget {*
 - S.191 (Listing 12.4) - Großbuchstabe zu Beginn
     - Falsch: *Import "package:flutter/material.dart";*
-    - Richtig: i*mport "package:flutter/material.dart";*
+    - Richtig: *import "package:flutter/material.dart";*
 - S.226 (Listing 15.9)
     - Falsch: *Icon(FontAwesomeIcons.fish,color: CustomColors.blueMedium,),*
     - Richtig: Komplett entfernen, da FontAwesome nicht beschrieben wurde
@@ -93,9 +93,6 @@
 - S.249 (Listing 16.6) - Methoden falsch
     - Falsch:
     ```dart
-    import "dart:async";
-    import "package:pummel_the_fish/data/models/pet.dart";
-
     abstract class PetRepository {
         ...  
         FutureOr<void> updatePetById(Pet pet);  
@@ -104,9 +101,6 @@
     ```
     - Richtig:
     ```dart
-    import "dart:async";
-    import "package:pummel_the_fish/data/models/pet.dart";
-
     abstract class PetRepository {  
         // Name anpassen
         FutureOr<void> updatePet(Pet pet); 
@@ -124,35 +118,21 @@
         final emptyDocument = await firestore.collection(petCollection).add();
         final petWithId = Pet(
             id: docId.id,      
-            name: pet.name,
-            species: pet.species,
-            age: pet.age,
-            weight: pet.weight,
-            height: pet.height,
-            isFemale: pet.isFemale,
-            owner: pet.owner,
+            ...
         );    
-        emptyDocument.set(petWithId.toMap());  
     }
     ```
     - Neu:
     ```dart
     @override  
     Future<void> addPet(Pet pet) async {
-        // anpassen    
+        // add({}) anpassen    
         final emptyDocument = await firestore.collection(petCollection).add({});
         final petWithId = Pet(
-            // anpassen
+            // id anpassen
             id: emptyDocument.id,      
-            name: pet.name,
-            species: pet.species,
-            age: pet.age,
-            weight: pet.weight,
-            height: pet.height,
-            isFemale: pet.isFemale,
-            owner: pet.owner,
+            ...
         );    
-        emptyDocument.set(petWithId.toMap());  
     }
     ```
 - S.293 (Listing 17.11) - fromJson Methode gibt es nicht, nur fromMap
@@ -171,7 +151,9 @@
     - Richtig:
     ```dart
     Future<List<Pet>> getPetsOrderedByHeight() async {
+        // "firestore" anpassen
         final petsSnapshot = await firestore.collection(petCollection).orderBy("height", descending: true).get();
+        // fromJson zu fromMap ändern
         final petList = petsSnapshot.docs.map((doc) => Pet.fromMap(doc.data())).toList();
         
         return petList;
@@ -228,15 +210,15 @@
 	ManagePetsCubit(this.firestorePetRepository): 
 		super(const ManagePetsState());
     ```
-- S. 359 (Listing 21.15) - Falsche Variable
+- S.359 (Listing 21.15) - Falsche Variable
     - Falsch: *expect(result, tPets);*
     - Richtig: *expect(result, tPetList);*
 - S.364 (Listing 21.20) - Falscher Import Pfad
     - Falsch: *import "package:pummel_the_fish/cubits/manage_pets_cubit.dart";*
     - Richtig: *import "package:pummel_the_fish/logic/cubits/manage_pets_cubit.dart";*
-- S. 368 (Listing 21.25) - Falscher Text
+- S.368 (Listing 21.25) - Falscher Text
     - Falsch: *expect(find.text("Space"), findsOneWidget);*
     - Richtig: *expect(find.text("Harribart"), findsOneWidget);*
 - S.372 MultiDex Support
-    - Falsch: multiDexEnabled
-    - Richtig: multiDexEnabled true
+    - Falsch: *multiDexEnabled*
+    - Richtig: *multiDexEnabled true*
