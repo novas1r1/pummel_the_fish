@@ -25,19 +25,17 @@
     - Falsch:
     ```dart
     abstract class PetRepository {
-	    Pet? getPetById(String id);
-	    List<Pet> getAllPets();
+	    ...
 	    void addPet();
-	    void deletePetById(String id);
     }
     ```
     - Richtig:
     ```dart
     abstract class PetRepository {
-	    Pet? getPetById(String id);
-	    List<Pet> getAllPets();
+	    ...
+        // Parameter anpassen
 	    void addPet(Pet pet);
-	    void deletePetById(String id);
+        //  Methode hinzufügen
 	    void updatePet(Pet pet);
     }
    ```
@@ -46,26 +44,16 @@
     ```dart
     class FakePetRepository implements PetRepository {
         @override
-        Pet? getPetById(String id) { ... }
-        @override
-        List<Pet> getAllPets() { ... }
-        @override
         void addPet() { ... }
-        @override
-        void deletePetById(String id) { ... }
     }
     ```
     - Richtig:
     ```dart
     class FakePetRepository implements PetRepository {
-        @override
-        Pet? getPetById(String id) { ... }
-        @override
-        List<Pet> getAllPets() { ... }
+        // Parameter anpassen
         @override
         void addPet(Pet pet) { ... }
-        @override
-        void deletePetById(String id) { ... }
+        // Methode hinzufügen
         @override
         void updatePet(Pet pet) { ... }
     }
@@ -108,9 +96,8 @@
     import "dart:async";
     import "package:pummel_the_fish/data/models/pet.dart";
 
-    abstract class PetRepository {  
-        FutureOr<List<Pet>> getAllPets();  
-        FutureOr<void> addPet(Pet pet);  
+    abstract class PetRepository {
+        ...  
         FutureOr<void> updatePetById(Pet pet);  
         FutureOr<void> deletePetById(Pet pet);  
     }
@@ -121,10 +108,11 @@
     import "package:pummel_the_fish/data/models/pet.dart";
 
     abstract class PetRepository {  
-        FutureOr<List<Pet>> getAllPets();  
-        FutureOr<void> addPet(Pet pet);  
-        FutureOr<void> updatePet(Pet pet);  
-        FutureOr<void> deletePetById(String id);  
+        // Name anpassen
+        FutureOr<void> updatePet(Pet pet); 
+        // Parameter anpassen 
+        FutureOr<void> deletePetById(String id);
+        // Methode hinzufügen
         FutureOr<Pet?> getPetById(String id);
     }
     ```
@@ -136,7 +124,7 @@
         final emptyDocument = await firestore.collection(petCollection).add();
         final petWithId = Pet(
             id: docId.id,      
-                    name: pet.name,
+            name: pet.name,
             species: pet.species,
             age: pet.age,
             weight: pet.weight,
@@ -150,11 +138,13 @@
     - Neu:
     ```dart
     @override  
-    Future<void> addPet(Pet pet) async {    
+    Future<void> addPet(Pet pet) async {
+        // anpassen    
         final emptyDocument = await firestore.collection(petCollection).add({});
         final petWithId = Pet(
+            // anpassen
             id: emptyDocument.id,      
-                    name: pet.name,
+            name: pet.name,
             species: pet.species,
             age: pet.age,
             weight: pet.weight,
@@ -197,32 +187,18 @@
     - Falsch:
     ```dart
     BlocSelector<ManagePetsCubit, ManagePetsState, int>
-        selector: (state) {
-            if (state is ManagePetsSuccess) {
-                return state.currentPetAmount;
-            }
-            return 0;
-        },
-        builder: (context, currentPetAmount) {
-            return const Text("$currentPetAmount");
-        },
+        selector: (state) { ... },
+        builder: (context, currentPetAmount) { ... },
     ),
     ```
     - Richtig:
     ```dart
     BlocSelector<ManagePetsCubit, ManagePetsState, int>(
-        selector: (state) {
-            if (state is ManagePetsSuccess) {
-                return state.currentPetAmount;
-            }                    
-            return 0;                  
-        },                  
-        builder: (context, currentPetAmount) {
-            return Text("$currentPetAmount");
-        },
+        selector: (state) { ... },                  
+        builder: (context, currentPetAmount) { ...},
     ),
     ```
-- S.335 (Listing 20.18) - Falsche Benennung
+- S.335 (Listing 20.18) - Falsche Benennung `firebaseFirestore`
     - Falsch:
     ```dart
     create: (context) => FirestorePetRepository(
@@ -235,7 +211,7 @@
         firestore: FirebaseFirestore.instance,
     ),
     ```
-- S.338 (Listing 20.25) - Falsche Benennung
+- S.338 (Listing 20.25) - Falsche Benennung `petRepository`
     - Falsch:
     ```dart
     class ManagePetsCubit extends Cubit<ManagePetsState> {
