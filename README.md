@@ -3,7 +3,7 @@ In diesem Repository befindet sich der Quellcode für die Beispiel-App "Pummel T
 
 Im Ordner `start_pummel_the_fish` finden Sie außerdem den Code, der im Buch als Ausgangspunkt für die App verwendet wird. 
 
-Der Code ist auf [GitHub](https://github.com/novas1r1/pummel_the_fish) sowie auf der [offiziellen Wiley Seite](https://wiley-vch.de/ISBN9783527720293) verfügbar. Auf GitHub werden wir den Code regelmäßig anpassen, um ihn auf dem neuesten Stand zu halten. Außerdem können Sie dort auch die einzelnen Versionen des Codes herunterladen und Fragen stellen. Eine vollständig getestete Code-Base werden Sie dort ebenfalls vorfinden.
+Der Code ist auf [GitHub](https://github.com/novas1r1/pummel_the_fish) sowie auf der [offiziellen Wiley Seite](https://wiley-vch.de/ISBN9783527720293) verfügbar. Auf GitHub werden wir den Code regelmäßig anpassen, um ihn auf dem neuesten Stand zu halten. Außerdem können Sie dort auch die einzelnen Versionen des Codes herunterladen und Fragen stellen. Eine vollständig getestete Code-Base werden Sie dort ebenfalls vorfinden. Weitere Infos finden Sie außerdem auf der [offiziellen Webseite](https://losfluttern.de) zum Buch.
 
 Wir wünschen Ihnen viel Spaß beim Lesen und Programmieren!
 Verena Zaiser und Mira Jago
