@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>673451247806-udor3qvme2hfes8qjn6s7ur7so4ichjj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.673451247806-udor3qvme2hfes8qjn6s7ur7so4ichjj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBuAdHT7K_2r6I8_YgYDAw_HY5GQqbqt5I</string>
+	<key>GCM_SENDER_ID</key>
+	<string>673451247806</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.pummelTheFish</string>
+	<key>PROJECT_ID</key>
+	<string>pummel-the-fish</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pummel-the-fish.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:673451247806:ios:5e6be3c89786f108d3b6ef</string>
+</dict>
+</plist>
