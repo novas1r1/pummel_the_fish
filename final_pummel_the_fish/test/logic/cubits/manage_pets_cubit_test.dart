@@ -39,7 +39,7 @@ void main() {
   });
   group("getAllPets()", () {
     blocTest<ManagePetsCubit, ManagePetsState>(
-      "emits [ManagePetsStatus.loading, ManagePetsStatus.success] when getAllPets() is called successfully.",
+      "emits [ManagePetsLoading, ManagePetsSuccess] when getAllPets() is called successfully.",
       setUp: () {
         when(() => mockFirestorePetRepository.getAllPets())
             .thenAnswer((_) async => tPetList);
@@ -48,9 +48,23 @@ void main() {
       act: (cubit) => cubit.getAllPets(),
       expect: () => <ManagePetsState>[
         ManagePetsLoading(),
-        ManagePetsSuccess(
-          pets: tPetList,
-        )
+        ManagePetsSuccess(pets: tPetList)
+      ],
+      verify: (_) =>
+          verify(() => mockFirestorePetRepository.getAllPets()).called(1),
+    );
+
+    blocTest<ManagePetsCubit, ManagePetsState>(
+      "emits [ManagePetsLoading, ManagePetsError] when getAllPets() throws an Exception.",
+      setUp: () {
+        when(() => mockFirestorePetRepository.getAllPets())
+            .thenThrow(Exception());
+      },
+      build: () => cubit,
+      act: (cubit) => cubit.getAllPets(),
+      expect: () => <ManagePetsState>[
+        ManagePetsLoading(),
+        ManagePetsError(),
       ],
       verify: (_) =>
           verify(() => mockFirestorePetRepository.getAllPets()).called(1),

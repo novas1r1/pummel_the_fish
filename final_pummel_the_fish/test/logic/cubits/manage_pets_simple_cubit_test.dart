@@ -58,5 +58,21 @@ void main() {
       verify: (_) =>
           verify(() => mockFirestorePetRepository.getAllPets()).called(1),
     );
+
+    blocTest<ManagePetsSimpleCubit, ManagePetsSimpleState>(
+      "emits [ManagePetsStatus.loading, ManagePetsStatus.error] when getAllPets() throws an Exception",
+      setUp: () {
+        when(() => mockFirestorePetRepository.getAllPets())
+            .thenThrow(Exception());
+      },
+      build: () => cubit,
+      act: (cubit) => cubit.getAllPets(),
+      expect: () => <ManagePetsSimpleState>[
+        const ManagePetsSimpleState(status: ManagePetsStatus.loading),
+        const ManagePetsSimpleState(status: ManagePetsStatus.error),
+      ],
+      verify: (_) =>
+          verify(() => mockFirestorePetRepository.getAllPets()).called(1),
+    );
   });
 }
