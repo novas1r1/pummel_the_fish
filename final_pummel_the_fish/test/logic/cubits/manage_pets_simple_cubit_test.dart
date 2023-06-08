@@ -69,7 +69,8 @@ void main() {
       act: (cubit) => cubit.getAllPets(),
       expect: () => <ManagePetsSimpleState>[
         const ManagePetsSimpleState(status: ManagePetsStatus.loading),
-        const ManagePetsSimpleState(status: ManagePetsStatus.error),
+        const ManagePetsSimpleState(
+            status: ManagePetsStatus.error, errorMessage: 'Exception'),
       ],
       verify: (_) =>
           verify(() => mockFirestorePetRepository.getAllPets()).called(1),

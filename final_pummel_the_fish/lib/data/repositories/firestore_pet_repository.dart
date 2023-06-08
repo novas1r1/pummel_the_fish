@@ -71,27 +71,36 @@ class FirestorePetRepository implements PetRepository {
     /// eine neue ID generiert werden und der Test jedes Mal fehlschlagen.
     @visibleForTesting String? testDocId,
   }) async {
-    final emptyDocument = await firestore.collection(petCollection).add({});
-
-    final petWithId = Pet(
-      id: testDocId ?? emptyDocument.id,
-      name: pet.name,
-      species: pet.species,
-      age: pet.age,
-      weight: pet.weight,
-      height: pet.height,
-      isFemale: pet.isFemale,
-      owner: pet.owner,
-    );
-
     if (testDocId != null) {
+      final petWithId = Pet(
+        id: testDocId,
+        name: pet.name,
+        species: pet.species,
+        age: pet.age,
+        weight: pet.weight,
+        height: pet.height,
+        isFemale: pet.isFemale,
+        owner: pet.owner,
+      );
       firestore.collection(petCollection).doc(testDocId).set(petWithId.toMap());
     } else {
+      final emptyDocument = await firestore.collection(petCollection).add({});
+      final petWithId = Pet(
+        id: emptyDocument.id,
+        name: pet.name,
+        species: pet.species,
+        age: pet.age,
+        weight: pet.weight,
+        height: pet.height,
+        isFemale: pet.isFemale,
+        owner: pet.owner,
+      );
       emptyDocument.set(petWithId.toMap());
     }
   }
 
   /// Aktualisiert ein [Pet]-Objekt
+  /// Auch hier müssen wir zwecks der Tests auf die [testDocId] zurückgreifen.
   @override
   Future<void> updatePet(
     Pet pet, {
@@ -139,7 +148,7 @@ class FirestorePetRepository implements PetRepository {
     return petList;
   }
 
-  /// Gibt eine Liste an [Pet]-Objekten zurück, die nach Höhe sortiert sind
+  /// Gibt eine Liste an [Pet]-Objekten zurück, die nach Höhe absteigend sortiert sind
   Future<List<Pet>> getPetsOrderedByHeight() async {
     final petsSnapshot = await firestore
         .collection(petCollection)
