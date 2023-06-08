@@ -35,4 +35,50 @@ class ManagePetsSimpleCubit extends Cubit<ManagePetsSimpleState> {
       );
     }
   }
+
+  Future<void> deletePet(String id) async {
+    emit(state.copyWith(status: ManagePetsStatus.loading));
+
+    try {
+      // delete pet
+      await firestorePetRepository.deletePetById(id);
+
+      // fetch pets again
+      final pets = await firestorePetRepository.getAllPets();
+
+      emit(state.copyWith(
+        status: ManagePetsStatus.deleteSuccess,
+        pets: pets,
+      ));
+    } on Exception catch (ex) {
+      emit(
+        state.copyWith(
+          status: ManagePetsStatus.deleteError,
+          errorMessage: ex.toString(),
+        ),
+      );
+    }
+  }
+
+  Future<void> updatePet(Pet updatedPet) async {
+    emit(state.copyWith(status: ManagePetsStatus.loading));
+
+    try {
+      // update pet
+      await firestorePetRepository.updatePet(updatedPet);
+      final pets = await firestorePetRepository.getAllPets();
+
+      emit(state.copyWith(
+        status: ManagePetsStatus.updateSuccess,
+        pets: pets,
+      ));
+    } on Exception catch (ex) {
+      emit(
+        state.copyWith(
+          status: ManagePetsStatus.updateError,
+          errorMessage: ex.toString(),
+        ),
+      );
+    }
+  }
 }

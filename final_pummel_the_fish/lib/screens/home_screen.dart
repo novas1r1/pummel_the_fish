@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:pummel_the_fish/data/repositories/firestore_pet_repository.dart";
 import "package:pummel_the_fish/logic/cubits/manage_pets_simple_cubit.dart";
 import "package:pummel_the_fish/widgets/adoption_bag.dart";
 import "package:pummel_the_fish/widgets/inherited_adoption_bag.dart";
@@ -24,17 +23,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Wenn der managePetsSimpleCubit null ist, dann können wir den
-    /// normalen BlocProvider verwenden, wenn er nicht null ist, dann
-    /// verwenden wir BlocProvider.value, damit wir den Cubit mocken können.
+    /// Wenn der managePetsSimpleCubit nicht null ist, dann können wir den
+    /// normalen BlocProvider verwenden, der in der main.dart definiert wurde
+    /// und per BlocPorvider.value übergeben.
+    /// Wenn er null ist, dann verwenden wir BlocProvider.value mit
+    /// dem frisch übergebenen ManagePetsSimpleCubit, damit wir den Cubit mocken können.
     return managePetsSimpleCubit == null
-        ? BlocProvider(
-            create: (context) =>
-                ManagePetsSimpleCubit(context.read<FirestorePetRepository>()),
+        ? BlocProvider.value(
+            value: context.read<ManagePetsSimpleCubit>()..getAllPets(),
             child: const _HomeScreenView(),
           )
         : BlocProvider.value(
-            value: managePetsSimpleCubit!,
+            value: managePetsSimpleCubit!..getAllPets(),
             child: const _HomeScreenView(),
           );
   }
@@ -68,7 +68,8 @@ class _HomeScreenView extends StatelessWidget {
               if (state.status == ManagePetsStatus.error) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text("Es ist ein Fehler aufgetreten."),
+                    content: Text(
+                        "Beim Laden der Kuscheltiere ist ein Fehler aufgetreten."),
                   ),
                 );
               }
@@ -82,6 +83,10 @@ class _HomeScreenView extends StatelessWidget {
                 case ManagePetsStatus.loading:
                   return const PetListLoading();
                 case ManagePetsStatus.success:
+                case ManagePetsStatus.deleteSuccess:
+                case ManagePetsStatus.deleteError:
+                case ManagePetsStatus.updateSuccess:
+                case ManagePetsStatus.updateError:
                   return PetListLoaded(pets: state.pets);
                 case ManagePetsStatus.error:
                   return const PetListError(

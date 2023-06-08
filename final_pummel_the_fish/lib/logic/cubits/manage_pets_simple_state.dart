@@ -5,6 +5,10 @@ enum ManagePetsStatus {
   initial,
   loading,
   success,
+  deleteSuccess,
+  deleteError,
+  updateSuccess,
+  updateError,
   error,
 }
 
