@@ -46,9 +46,7 @@ class _DetailPetScreenState extends State<DetailPetScreen> {
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pushNamed(context, "/home");
-            },
+            onPressed: () => Navigator.pushNamed(context, "/home"),
           ),
           title: Text(pet.name),
           actions: [
@@ -120,9 +118,8 @@ class _DetailPetScreenState extends State<DetailPetScreen> {
                     ),
                     const SizedBox(height: 16),
                     CustomButton(
-                      onPressed: () {
-                        InheritedAdoptionBag.of(context).addPet();
-                      },
+                      onPressed: () =>
+                          InheritedAdoptionBag.of(context).addPet(),
                       label: 'Adoptieren',
                     ),
                   ],
