@@ -1,0 +1,67 @@
+name: pummel_the_fish
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.1 <4.0.0"
+  flutter: "3.10.4"
+
+dependencies:
+  cloud_firestore: ^4.8.0
+  collection: ^1.17.1
+  equatable: ^2.0.5
+  # This is needed to test firestore
+  fake_cloud_firestore: ^2.4.1+1
+  firebase_core: ^2.13.1
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.3
+  flutter_launcher_icons: ^0.13.1
+  http: ^1.0.0
+
+dev_dependencies:
+  bloc_test: ^9.1.3
+  flutter_lints: ^2.0.1
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  mocktail: ^0.3.0
+
+# T6K22: Testen. builden, veröffentlichen
+# App Icons mit flutter_launcher_icons erstellen
+flutter_icons:
+  image_path: "assets/images/logo.png"
+  android: true
+  ios: true
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Comfortaa
+      fonts:
+        - asset: assets/fonts/Comfortaa-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Comfortaa-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Comfortaa-Bold.ttf
+          weight: 700
+    - family: Titillium Web
+      fonts:
+        - asset: assets/fonts/TitilliumWeb-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/TitilliumWeb-Black.ttf
+          weight: 900
+  assets:
+    # Eine einzelne Datei hinzufügen:
+    - assets/images/logo.png
+    - assets/images/pummel.png
+    - assets/images/dog.jpg
+    - assets/images/cat.jpg
+    - assets/images/bird.jpg
+    - assets/images/fish.jpg
+    # Oder den ganzen images Ordner hinzufügen:
+    # - assets/images/
