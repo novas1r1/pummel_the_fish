@@ -8,7 +8,20 @@ import "package:pummel_the_fish/widgets/custom_button.dart";
 class EditPetScreen extends StatefulWidget {
   final Pet pet;
 
-  const EditPetScreen({super.key, required this.pet});
+  /// Wir definieren hier wieder eine zusätzlich vissibleForTesting Variable
+  /// um das firestorePetRepository für Tests mocken zu können.
+  /// Im Idealfall würden wir hier gar kein Repository übergeben, sondern
+  /// die ganze Logik über den ManagePetsCuibt abwickeln. Das würde den Code
+  /// aber zu stark modifizieren, sodass er deutlich vom Buch abweicht.
+  /// Auf Wunsch, kann dieser Code aber gerne nachgeliefert werden.
+  @visibleForTesting
+  final FirestorePetRepository? firestorePetRepository;
+
+  const EditPetScreen({
+    super.key,
+    required this.pet,
+    this.firestorePetRepository,
+  });
 
   @override
   State<EditPetScreen> createState() => _EditPetScreenState();
@@ -30,9 +43,12 @@ class _EditPetScreenState extends State<EditPetScreen> {
   void initState() {
     super.initState();
 
-    firestorePetRepository = FirestorePetRepository(
-      firestore: FirebaseFirestore.instance,
-    );
+    // je nachdem, ob ein mockbares Repository übergeben wurde oder nicht,
+    // wird das entsprechende Repository initialisiert oder zugewiesen
+    firestorePetRepository = widget.firestorePetRepository ??
+        FirestorePetRepository(
+          firestore: FirebaseFirestore.instance,
+        );
 
     // Die Felder werden mit den Werten des übergebenen Pet-Objekts vorbefüllt
     currentName = widget.pet.name;
