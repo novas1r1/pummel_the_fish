@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pummel_the_fish/data/models/pet.dart';
 import 'package:pummel_the_fish/screens/detail_pet_screen.dart';
+import 'package:pummel_the_fish/widgets/adoption_bag_wrapper.dart';
+
+import '../logic/cubits/manage_pets_cubit_test.dart';
 
 void main() {
   late Pet tPet;
+  late MockFirestorePetRepository mockFirestorePetRepository;
 
   setUp(() {
+    mockFirestorePetRepository = MockFirestorePetRepository();
+
     tPet = const Pet(
       name: 'Test Pet',
       species: Species.cat,
@@ -21,9 +27,12 @@ void main() {
 
   testWidgets('DetailPetScreen: all states', (tester) async {
     await tester.pumpWidget(
-      MaterialApp(
-        home: DetailPetScreen(
-          pet: tPet,
+      AdoptionBagWrapper(
+        child: MaterialApp(
+          home: DetailPetScreen(
+            pet: tPet,
+            firestorePetRepository: mockFirestorePetRepository,
+          ),
         ),
       ),
     );
@@ -50,5 +59,11 @@ void main() {
     expect(find.text("2 Jahre"), findsOneWidget);
     expect(find.text("10.0 cm / 5.0 Gramm"), findsOneWidget);
     expect(find.text("Weiblich"), findsOneWidget);
+
+    // golden test
+    await expectLater(
+      find.byType(AdoptionBagWrapper),
+      matchesGoldenFile("detail_pet_screen.png"),
+    );
   });
 }
