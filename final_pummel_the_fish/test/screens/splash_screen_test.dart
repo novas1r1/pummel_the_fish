@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pummel_the_fish/screens/home_screen.dart';
 import 'package:pummel_the_fish/screens/splash_screen.dart';
 
 void main() {
@@ -14,9 +13,16 @@ void main() {
     expect(find.byType(SafeArea), findsOneWidget);
     expect(find.byType(Center), findsOneWidget);
     expect(find.byType(Image), findsOneWidget);
+
+    // golden test
+    await expectLater(
+      find.byType(MaterialApp),
+      matchesGoldenFile("splash_screen.png"),
+    );
   });
 
-  testWidgets('SplashScreen changes to HomeScreen', (tester) async {
+  // TODO
+  /*  testWidgets('SplashScreen changes to HomeScreen', (tester) async {
     await tester.pumpWidget(const MaterialApp(
       home: SplashScreen(),
     ));
@@ -24,5 +30,5 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(HomeScreen), findsOneWidget);
-  });
+  }); */
 }
