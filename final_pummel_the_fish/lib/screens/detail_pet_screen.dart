@@ -10,9 +10,19 @@ import "package:pummel_the_fish/widgets/inherited_adoption_bag.dart";
 class DetailPetScreen extends StatefulWidget {
   final Pet pet;
 
+  /// Wir definieren hier wieder eine zusätzlich vissibleForTesting Variable
+  /// um das firestorePetRepository für Tests mocken zu können.
+  /// Im Idealfall würden wir hier gar kein Repository übergeben, sondern
+  /// die ganze Logik über den ManagePetsCuibt abwickeln. Das würde den Code
+  /// aber zu stark modifizieren, sodass er deutlich vom Buch abweicht.
+  /// Auf Wunsch, kann dieser Code aber gerne nachgeliefert werden.
+  @visibleForTesting
+  final FirestorePetRepository? firestorePetRepository;
+
   const DetailPetScreen({
     super.key,
     required this.pet,
+    this.firestorePetRepository,
   });
 
   @override
@@ -30,9 +40,12 @@ class _DetailPetScreenState extends State<DetailPetScreen> {
 
     pet = widget.pet;
 
-    firestorePetRepository = FirestorePetRepository(
-      firestore: FirebaseFirestore.instance,
-    );
+    // je nachdem, ob ein mockbares Repository übergeben wurde oder nicht,
+    // wird das entsprechende Repository initialisiert oder zugewiesen
+    firestorePetRepository = widget.firestorePetRepository ??
+        FirestorePetRepository(
+          firestore: FirebaseFirestore.instance,
+        );
   }
 
   @override
