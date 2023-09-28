@@ -10,12 +10,12 @@ environment:
   flutter: "3.10.4"
 
 dependencies:
-  cloud_firestore: ^4.9.1
+  cloud_firestore: ^4.9.2
   collection: ^1.17.1
   equatable: ^2.0.5
   # This is needed to test firestore
   fake_cloud_firestore: ^2.4.1+1
-  firebase_core: ^2.15.1
+  firebase_core: ^2.16.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
