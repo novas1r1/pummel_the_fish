@@ -17,10 +17,10 @@ dependencies:
 
   # FLUTTER 3.10.X / DART 3 UPDATE:
   # Im Buch wird mit Version 0.13.5 gearbeitet
-  http: ^1.0.0
+  http: ^1.1.0
 
 dev_dependencies:
-  flutter_lints: ^2.0.1
+  flutter_lints: ^2.0.3
   flutter_test:
     sdk: flutter
 

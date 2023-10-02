@@ -10,16 +10,16 @@ environment:
   flutter: "3.10.4"
 
 dependencies:
-  cloud_firestore: ^4.8.0
+  cloud_firestore: ^4.9.2
   collection: ^1.17.1
 
-  firebase_core: ^2.13.1
+  firebase_core: ^2.16.0
   flutter:
     sdk: flutter
-  http: ^1.0.0
+  http: ^1.1.0
 
 dev_dependencies:
-  flutter_lints: ^2.0.1
+  flutter_lints: ^2.0.3
   flutter_test:
     sdk: flutter
 
