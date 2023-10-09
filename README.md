@@ -9,7 +9,7 @@ Wir wünschen Ihnen viel Spaß beim Lesen und Programmieren!
 Verena Zaiser und Mira Jago
 
 ## Wichtige Informationen
-Die im Buch verwendete Flutter-Version ist `3.7.11`. Die im [GitHub Repository](https://github.com/novas1r1/pummel_the_fish) verwendete Flutter-Version ist `3.10.4`. Wir werden versuchen, dieses Repository so gut es geht auf dem neuesten Stand zu halten und Anpassungen entsprechend im Code kommentieren.
+Die im Buch verwendete Flutter-Version ist `3.7.11`. Die im [GitHub Repository](https://github.com/novas1r1/pummel_the_fish) verwendete Flutter-Version ist `3.13.6`. Wir werden versuchen, dieses Repository so gut es geht auf dem neuesten Stand zu halten und Anpassungen entsprechend im Code kommentieren.
 
 Wenn Sie mit Firebase arbeiten wollen, müssen Sie Ihr eigenes Projekt in der Firebase Console anlegen und in diesem Projekt konfigurieren. Wie das funktioniert erfahren Sie in Teil 4, Kapitel 17. Die `firebase_options.dart` Datei im `lib`-Ordner wird benötigt, um sich dann auf Ihr Firebase Projekt zu verbinden.
 
