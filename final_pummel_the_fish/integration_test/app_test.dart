@@ -13,9 +13,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  testWidgets(
-      "SplashScreen shows first and changes to HomeScreen after 3 seconds",
-      (tester) async {
+  testWidgets("SplashScreen shows first and changes to HomeScreen after 3 seconds", (tester) async {
     await tester.pumpWidget(const MyApp());
     await tester.pumpAndSettle();
 
