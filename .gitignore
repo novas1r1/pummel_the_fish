@@ -3,3 +3,7 @@
 **/ios/Runner/GoogleService-Info.plist
 **/android/app/google-services.json
 **/test/widgets/failures/
+
+T4_K17_pummel_the_fish/macos/firebase_app_id_file.json
+
+T4_K17_pummel_the_fish/macos/Runner/GoogleService-Info.plist
