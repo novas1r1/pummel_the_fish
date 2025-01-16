@@ -42,8 +42,9 @@ class MyApp extends StatelessWidget {
               onSecondary: CustomColors.white,
               error: CustomColors.red,
               onError: CustomColors.white,
-              background: CustomColors.white,
-              onBackground: CustomColors.blueMedium,
+              // DEPRECATED:
+              // background: CustomColors.white,
+              // onBackground: CustomColors.blueMedium,
               surface: CustomColors.blueLight,
               onSurface: CustomColors.white,
             ),
@@ -106,6 +107,16 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.w700,
                 fontSize: 12,
                 color: CustomColors.blueDark,
+              ),
+            ),
+            // Hinzugefügt damit man den Text besser lesen kann
+            snackBarTheme: const SnackBarThemeData(
+              backgroundColor: CustomColors.blueDark,
+              contentTextStyle: TextStyle(
+                fontFamily: "Titillium Web",
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
+                color: CustomColors.white,
               ),
             ),
           ),
