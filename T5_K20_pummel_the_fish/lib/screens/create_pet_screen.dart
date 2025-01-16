@@ -252,7 +252,12 @@ class _CreatePetScreenState extends State<CreatePetScreen> {
             ),
           ),
         );
-      } on Exception {
+
+        if (!mounted) return;
+
+        Navigator.pop(context);
+      } on Exception catch (ex) {
+        print("Fehler beim Hinzufügen des Kuscheltiers: $ex");
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: CustomColors.red,
@@ -262,10 +267,6 @@ class _CreatePetScreenState extends State<CreatePetScreen> {
           ),
         );
       }
-
-      if (!mounted) return;
-
-      Navigator.pop(context);
     }
   }
 }

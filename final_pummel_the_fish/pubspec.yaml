@@ -7,29 +7,29 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=3.0.1 <4.0.0"
-  flutter: "3.19.2"
+  flutter: "3.27.1"
 
 dependencies:
-  cloud_firestore: ^4.15.6
-  collection: ^1.17.1
-  equatable: ^2.0.5
+  cloud_firestore: ^5.6.1
+  collection: ^1.19.0
+  equatable: ^2.0.7
   # This is needed to test firestore
-  fake_cloud_firestore: ^2.4.8
-  firebase_core: ^2.25.5
+  fake_cloud_firestore: ^3.1.0
+  firebase_core: ^3.10.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.4
-  flutter_launcher_icons: ^0.13.1
-  http: ^1.2.0
+  flutter_bloc: ^9.0.0
+  flutter_launcher_icons: ^0.14.2
+  http: ^1.2.2
 
 dev_dependencies:
-  bloc_test: ^9.1.6
-  flutter_lints: ^3.0.1
+  bloc_test: ^10.0.0
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
   integration_test:
     sdk: flutter
-  mocktail: ^1.0.3
+  mocktail: ^1.0.4
 
 # T6K22: Testen. builden, veröffentlichen
 # App Icons mit flutter_launcher_icons erstellen

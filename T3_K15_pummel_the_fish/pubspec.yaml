@@ -7,16 +7,16 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=3.0.1 <4.0.0"
-  flutter: "3.19.2"
+  flutter: "3.27.1"
 
 dependencies:
-  collection: ^1.17.1
+  collection: ^1.19.0
 
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
 

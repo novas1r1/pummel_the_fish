@@ -7,21 +7,21 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=3.0.1 <4.0.0"
-  flutter: "3.19.2"
+  flutter: "3.27.1"
 
 dependencies:
-  cloud_firestore: ^4.15.6
-  collection: ^1.17.1
+  cloud_firestore: ^5.6.1
+  collection: ^1.19.0
 
-  equatable: ^2.0.5
-  firebase_core: ^2.25.5
+  equatable: ^2.0.7
+  firebase_core: ^3.10.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.4
-  http: ^1.2.0
+  flutter_bloc: ^9.0.0
+  http: ^1.2.2
 
 dev_dependencies:
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
 
