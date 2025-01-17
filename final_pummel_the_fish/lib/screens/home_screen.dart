@@ -30,11 +30,12 @@ class HomeScreen extends StatelessWidget {
     return managePetsSimpleCubit == null
         ? BlocProvider(
             create: (context) =>
-                ManagePetsSimpleCubit(context.read<FirestorePetRepository>()),
+                ManagePetsSimpleCubit(context.read<FirestorePetRepository>())
+                  ..getAllPets(),
             child: const _HomeScreenView(),
           )
         : BlocProvider.value(
-            value: managePetsSimpleCubit!,
+            value: managePetsSimpleCubit!..getAllPets(),
             child: const _HomeScreenView(),
           );
   }
@@ -93,7 +94,17 @@ class _HomeScreenView extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, "/create"),
+        onPressed: () async {
+          await Navigator.pushNamed(context, "/create");
+
+          /// Anpassung 2025-01-17:
+          /// Wir rufen die Methode getAllPets() auf, um die Kuscheltiere erneut
+          /// zu laden, nachdem wir auf dem CreateScreen ein neues Kuscheltier
+          /// hinzugefügt haben.
+          if (context.mounted) {
+            context.read<ManagePetsSimpleCubit>().getAllPets();
+          }
+        },
         child: const Icon(Icons.add),
       ),
     );
