@@ -1,16 +1,30 @@
 import "dart:async";
 
 import "package:flutter/material.dart";
+import "package:pummel_the_fish/theme/custom_colors.dart";
 
-class SplashScreen extends StatelessWidget {
+/// 2025-01-17: Anpassung sodass Fehlermeldung von Flutter verschwindet:
+/// Unhandled Exception: Looking up a deactivated widget's ancestor is unsafe.
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, "/home");
-    });
+  State<SplashScreen> createState() => _SplashScreenState();
+}
 
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 3), () {
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, "/home");
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -22,7 +36,7 @@ class SplashScreen extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: CustomColors.blueLight,
     );
   }
 }
