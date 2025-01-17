@@ -34,6 +34,20 @@ class MyApp extends StatelessWidget {
           title: "Pummel The Fish",
           theme: ThemeData(
             useMaterial3: true,
+            // FLUTTER 3.27.X Anpassung:
+            // Wir ändern den Style der AppBar
+            appBarTheme: const AppBarTheme(
+              backgroundColor: CustomColors.blueLight,
+              titleTextStyle: TextStyle(
+                fontFamily: "Comfortaa",
+                fontWeight: FontWeight.w700,
+                fontSize: 20,
+                color: CustomColors.white,
+              ),
+              iconTheme: IconThemeData(
+                color: CustomColors.white,
+              ),
+            ),
             colorScheme: const ColorScheme(
               brightness: Brightness.light,
               primary: CustomColors.blueDark,
@@ -42,11 +56,13 @@ class MyApp extends StatelessWidget {
               onSecondary: CustomColors.white,
               error: CustomColors.red,
               onError: CustomColors.white,
+              // FLUTTER 3.27.X Anpassung:
               // DEPRECATED:
               // background: CustomColors.white,
               // onBackground: CustomColors.blueMedium,
-              surface: CustomColors.blueLight,
-              onSurface: CustomColors.white,
+              // FLUTTER 3.27.X Anpassung:
+              surface: CustomColors.white,
+              onSurface: CustomColors.blueMedium,
             ),
             inputDecorationTheme: const InputDecorationTheme(
               labelStyle: TextStyle(
